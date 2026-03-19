@@ -315,7 +315,7 @@ $(document).ready(function () {
       const inputClassValue = $('div[data-name="class"]').find("input").val();
       const inputHighschoolValue = $('div[data-name="highschool"]').find("input").val();
       const selectedIndustry = $('select[name="Training_industry"]').val();
-
+      const isRegisterConsult = $("#register_consult").is(":checked");
       /* =========================
          VALIDATE
       ========================= */
@@ -360,6 +360,7 @@ $(document).ready(function () {
         class: inputClassValue,
         highschool: inputHighschoolValue,
         industry: selectedIndustry,
+        consult: isRegisterConsult ? "Có" : "", // 👈 thêm dòng này
         created_at: new Date().toISOString(),
         lane: lane
       };
