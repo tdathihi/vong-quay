@@ -360,7 +360,7 @@ $(document).ready(function () {
         class: inputClassValue,
         highschool: inputHighschoolValue,
         industry: selectedIndustry,
-        consult: isRegisterConsult ? "Có" : "", // 👈 thêm dòng này
+        result: isRegisterConsult ? "Có" : "", // 👈 thêm dòng này
         created_at: new Date().toISOString(),
         lane: lane
       };

@@ -582,3 +582,50 @@ body {
 .other {
   display: none;
 }
+.consult-card {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.25s;
+  border: 2px solid transparent;
+}
+
+.consult-card:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.consult-title {
+  color: #000000;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.consult-desc {
+  font-size: 14px;
+  color: #000000;
+  margin-top: 3px;
+}
+
+.check-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #aaa;
+  transition: 0.25s;
+}
+
+/* ACTIVE */
+.consult-card.active {
+  border-color: #ff7a7c;
+  background: rgba(255, 77, 79, 0.15);
+}
+
+.consult-card.active .check-circle {
+  background: #f67274;
+  border-color: #ff4d4f;
+}

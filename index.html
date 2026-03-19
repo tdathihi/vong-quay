@@ -210,12 +210,26 @@
         <select id="Training_industry" name="Training_industry" class="select-container">
           <option value="" disabled selected>Chọn ngành muốn học ĐH, CĐ</option>
         </select>
-        <div class="input-container" style="margin-top:10px;">
-          <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-            <input type="checkbox" id="register_consult" />
-            Bạn có muốn đăng ký tư vấn không?
-          </label>
+        <div class="consult-card" id="consultBox">
+          <div class="consult-left">
+            <div class="consult-title">🎓 Đăng ký tư vấn</div>
+            <div class="consult-desc">Được gọi tư vấn ngành & học phí</div>
+          </div>
+
+          <div class="consult-check">
+            <div class="check-circle"></div>
+          </div>
+
+          <input type="checkbox" id="register_consult" hidden>
         </div>
+        <script>
+          $('#consultBox').click(function () {
+            const checkbox = $('#register_consult');
+
+            checkbox.prop('checked', !checkbox.prop('checked'));
+            $(this).toggleClass('active');
+          });
+        </script>
         <button type="submit" class="submit">
           <span class="loader"></span>
           Hoàn tất
