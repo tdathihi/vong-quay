@@ -27,7 +27,7 @@ $(document).ready(function () {
   });
 
   let notebookStock = 0;
-  let tshirtStock = 0;
+  let bearStock = 0;
   let keychainStock = 0;
 
   function showNotify(message) {
@@ -57,17 +57,17 @@ $(document).ready(function () {
     try {
       const [notebookDoc, tshirtDoc, keychainDoc] = await Promise.all([
         db.collection("rewards").doc("notebook").get(),
-        db.collection("rewards").doc("tshirt").get(),
+        db.collection("rewards").doc("bear").get(),
         db.collection("rewards").doc("keychain").get()
       ]);
 
       notebookStock = notebookDoc.data()?.notebookStock || 0;
-      tshirtStock = tshirtDoc.data()?.tshirtStock || 0;
+      bearStock = tshirtDoc.data()?.bearStock || 0;
       keychainStock = keychainDoc.data()?.keychainStock || 0;
 
       console.log("Stock loaded:", {
         notebookStock,
-        tshirtStock,
+        bearStock,
         keychainStock
       });
 
@@ -108,7 +108,7 @@ $(document).ready(function () {
       // 🔥 update local luôn (khỏi cần realtime)
       if (success) {
         if (docName === "notebook") notebookStock--;
-        if (docName === "tshirt") tshirtStock--;
+        if (docName === "tshirt") bearStock--;
         if (docName === "keychain") keychainStock--;
       }
 
@@ -142,7 +142,7 @@ $(document).ready(function () {
       }, 5000);
     }
 
-    if (notebookStock > 0 && rand < 0.02) {
+    if (notebookStock > 0 && rand < 0.10) {
       decreaseStock("notebook", "notebookStock", (success) => {
         targetAngle = success
           ? 148.5 + Math.random() * 50
@@ -152,8 +152,8 @@ $(document).ready(function () {
       return;
     }
 
-    if (tshirtStock > 0 && rand < 0.04) {
-      decreaseStock("tshirt", "tshirtStock", (success) => {
+    if (bearStock > 0 && rand < 0.16) {
+      decreaseStock("tshirt", "bearStock", (success) => {
         targetAngle = success
           ? 202.5 + Math.random() * 40
           : Math.random() * 22.5;
@@ -162,7 +162,7 @@ $(document).ready(function () {
       return;
     }
 
-    if (keychainStock > 0 && rand < 0.06) {
+    if (keychainStock > 0 && rand < 0.20) {
       decreaseStock("keychain", "keychainStock", (success) => {
         targetAngle = success
           ? 292.5 + Math.random() * 40
@@ -197,16 +197,16 @@ $(document).ready(function () {
       descriptionText = "Vui lòng đến gian hàng Cao đẳng Viễn Đông để nhận quà hoặc gửi mã này cho fanpage.";
     }
 
-    // ÁO
+    // GẤU BÔNG
     else if (position >= 202.5 && position <= 246.5) {
       rewardText = "CHÚC MỪNG BẠN TRÚNG MỘT CON GẤU BÔNG";
       code = generateRewardCode(6);
       descriptionText = "Vui lòng đến gian hàng Cao đẳng Viễn Đông để nhận quà hoặc gửi mã này cho fanpage.";
     }
 
-    // MÓC KHÓA
+    // LÓT CHUỘT
     else if (position >= 292.5 && position <= 336.5) {
-      rewardText = "CHÚC MỪNG BẠN TRÚNG ĐƯỢC MÓC KHÓA CDVD";
+      rewardText = "CHÚC MỪNG BẠN TRÚNG ĐƯỢC LÓT CHUỘT CDVD";
       code = generateRewardCode(6);
       descriptionText = "Vui lòng đến gian hàng Cao đẳng Viễn Đông để nhận quà hoặc gửi mã này cho fanpage.";
     }
@@ -454,6 +454,10 @@ $(document).ready(function () {
       }
     });
 
+  window.hehe = function() {
+    console.log("hehe")
+  }
+  
   window.testSpinReward = function (rewardName) {
 
     function rotate(angle) {
@@ -482,14 +486,14 @@ $(document).ready(function () {
       });
 
     }
-    else if (rewardName === "tshirt") {
+    else if (rewardName === "bear") {
 
-      decreaseStock("tshirt", "tshirtStock", (success) => {
+      decreaseStock("bear", "bearStock", (success) => {
         if (success) {
           let angle = 202.5 + 5;
           rotate(angle);
         } else {
-          alert("Tshirt hết rồi");
+          alert("Gấu bông hết rồi");
         }
       });
 
@@ -501,7 +505,7 @@ $(document).ready(function () {
           let angle = 292.5 + 5;
           rotate(angle);
         } else {
-          alert("Keychain hết rồi");
+          alert("Lót chuột hết rồi");
         }
       });
 
