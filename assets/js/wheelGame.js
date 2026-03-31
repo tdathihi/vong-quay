@@ -457,7 +457,7 @@ $(document).ready(function () {
   window.hehe = function() {
     console.log("hehe")
   }
-  
+
   window.testSpinReward = function (rewardName) {
 
     function rotate(angle) {
