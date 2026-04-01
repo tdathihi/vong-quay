@@ -142,7 +142,7 @@ $(document).ready(function () {
       }, 5000);
     }
 
-    if (notebookStock > 0 && rand < 0.10) {
+    if (notebookStock > 0 && rand < 0.15) {
       decreaseStock("notebook", "notebookStock", (success) => {
         targetAngle = success
           ? 148.5 + Math.random() * 50
@@ -152,7 +152,7 @@ $(document).ready(function () {
       return;
     }
 
-    if (bearStock > 0 && rand < 0.16) {
+    if (bearStock > 0 && rand < 0.23) {
       decreaseStock("tshirt", "bearStock", (success) => {
         targetAngle = success
           ? 202.5 + Math.random() * 40
@@ -162,7 +162,7 @@ $(document).ready(function () {
       return;
     }
 
-    if (keychainStock > 0 && rand < 0.20) {
+    if (keychainStock > 0 && rand < 0.30) {
       decreaseStock("keychain", "keychainStock", (success) => {
         targetAngle = success
           ? 292.5 + Math.random() * 40
